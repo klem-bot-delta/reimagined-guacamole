@@ -1,0 +1,10 @@
+{
+    "tabWidth": 4,
+    "arrowParens": "avoid",
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "pugAttributeSeparator": "always",
+    "pugClosingBracketPosition": "new-line",
+    "pugTabWidth": 2
+}
