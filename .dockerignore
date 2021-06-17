@@ -1,7 +1,0 @@
-.vscode
-.prettierrc
-*.log
-node_modules
-Dockerfile
-.dockerignore
-markdown/*

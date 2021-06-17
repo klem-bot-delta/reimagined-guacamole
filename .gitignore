@@ -2,3 +2,11 @@ markdown/*
 node_modules/
 *.log
 */**/*.log
+*.cache/
+*/**/*.cache/
+.cache
+test.md
+yarn.lock
+src/index.js
+src/template.js
+dist/
