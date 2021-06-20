@@ -9,4 +9,5 @@ test.md
 yarn.lock
 src/index.js
 src/template.js
+src/styles.js
 dist/

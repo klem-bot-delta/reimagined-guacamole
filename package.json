@@ -14,14 +14,17 @@
         "log-symbols": "^5.0.0",
         "markdown-it": "^12.0.6",
         "markdown-it-front-matter": "^0.2.3",
-        "markdown-it-include": "^2.0.0",
         "markdown-it-math": "^4.1.1",
+        "markdown-it-pdf": "^1.1.4",
         "markdown-it-sub": "^1.0.0",
         "markdown-it-sup": "^1.0.0",
         "markdown-it-textual-uml": "^0.1.7",
+        "mermaid": "^8.10.2",
         "pug": "^3.0.2",
         "system": "^2.0.1",
         "texzilla": "^1.0.2",
+        "uglifycss": "^0.0.29",
+        "uglifyjs": "^2.4.11",
         "yaml": "^2.0.0-5"
     },
     "devDependencies": {

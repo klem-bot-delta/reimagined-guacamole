@@ -9,7 +9,6 @@ import clc from 'cli-color'
 import hljs from 'highlight.js'
 import markDownItSub from 'markdown-it-sub'
 import markDownItSup from 'markdown-it-sup'
-import markDownItInclude from 'markdown-it-include'
 import markdownItTextualUml from 'markdown-it-textual-uml'
 
 import markdownItMath from 'markdown-it-math'
@@ -18,7 +17,8 @@ import texzilla from 'texzilla'
 import markdownItFrontMatter from '../node_modules/@gerhobbelt/markdown-it-front-matter/dist/markdownitFrontMatter.js'
 import YAML from 'yaml'
 
-import { pugTemplate } from './template.js';
+import { pugTemplate } from './template.js'
+import { stylesheets } from './styles.js'
 #endregion
 
 mathConf =
@@ -46,24 +46,28 @@ md = new markdown {
 
 template = pugTemplate
 
-
 fm = {}
 
 run = ->
   text = fs.readFileSync( path.resolve options.entry ).toString()
+  
   result = md.render text
-  htmlOut = template(
+  
+  htmlOut = template {
     title: if fm.title then fm.title else options.title
-    bodyMarkDown: result)
+    bodyMarkDown: result
+    stylesheet: if fm.theme then stylesheets[fm.theme.toLowerCase()] else stylesheets['github']
+  }
+
   fs.writeFileSync path.resolve(options.output), htmlOut
-  return
+
 
 md.use markdownItMath, mathConf
     .use markDownItSub
     .use markDownItSup
-    .use markDownItInclude
     .use markdownItTextualUml
-    .use markdownItFrontMatter, callback: (str) -> fm = YAML.parse str
+    .use( markdownItFrontMatter, callback: (str) -> fm = YAML.parse str )
+    
 
 
 options = cli.parse {
@@ -96,7 +100,7 @@ options = cli.parse {
 
 watcher = chokidar.watch options.entry, persistent: true
 
-
+ 
 if options.watch == true
   process.stdout.write clc.reset
 
